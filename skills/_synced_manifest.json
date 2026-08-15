@@ -1,0 +1,173 @@
+{
+  "lastUpdated": 1786753429247,
+  "skills": [
+    {
+      "skillId": "skill_01WeVpuseibzGZg6ue1e36KC",
+      "name": "reel-script-writer",
+      "description": "Writes 30-60 second Instagram Reel scripts optimized for teleprompter delivery. Use when John wants a short-form talking-head video script for Integrity Homes or The Veteran Realtor.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:39:42.242413Z"
+    },
+    {
+      "skillId": "skill_01A7bbqMvk5FBkd2Dntk7E7P",
+      "name": "integrity-blog-pipeline",
+      "description": "End-to-end weekly blog automation for Integrity Homes. Reads the OPERATING_SYSTEM workbook (Strategic Overview, Daily Blog Spine, Blog Distribution), pulls the weekly topic from the Daily Blog Spine, researches current market data, writes the blog using Blog Post Writer, formats it to gold-standard HTML using Lofty Blog HTML Builder, selects an approved image from the Image Vault, generates a Lofty metadata sheet for the CMS, and produces the full distribution package (GBP from approved templates + v1.1 patch, Reels script, IG/FB captions, Nextdoor, Reddit, YouTube Short, optional carousel). Use when John asks to create a blog, write a weekly blog, publish a blog, do blog content, run the blog pipeline, or anything related to blog creation and Lofty publishing for integrityhomeswi.com. Also trigger when John mentions Lofty blog, market report blog, Living in guide, lifestyle guide, blog distribution, Lofty metadata, weekly content pipeline, or content automation.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:40:00.498160Z"
+    },
+    {
+      "skillId": "skill_01ThPaFyW4pa8gi8CQV5xyD5",
+      "name": "brand-style-guide",
+      "description": "Applies Integrity Homes brand identity - colors, fonts, tone, voice, and sign-off - to any content Claude produces. Use when creating any client-facing marketing material for John Reuter or Integrity Homes.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:40:06.137072Z"
+    },
+    {
+      "skillId": "skill_01WYsQA5RUVrRgozQ5PqkV8c",
+      "name": "instagram-caption-writer",
+      "description": "Writes Instagram feed post captions for Integrity Homes - listings, market updates, tips, community content, and Reward Our Heroes posts. Use for any Instagram feed or carousel post.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:39:54.894005Z"
+    },
+    {
+      "skillId": "skill_01LFLZ4DFMwLKBWkBnKmmCPd",
+      "name": "roh-video-distribution",
+      "description": "Turns a raw video transcript or detailed outline into a complete multi-platform deployment pack for Reward Our Heroes. Produces a master copy across every platform engine (Facebook Reel + feed post, Instagram, YouTube SEO, TikTok, LinkedIn) plus a production blueprint (runtimes, first-3-seconds direction, B-roll, thumbnail text) and an omni-channel pack (YouTube Community Post, GBP update, email teaser). It generates everything well and John distributes selectively. Use when John has a video transcript, recorded clip, talking-head, interview, or detailed outline for ROH and wants it repurposed across platforms. Trigger on phrases like \"repurpose this video,\" \"distribute this transcript,\" \"turn this into social,\" \"multi-platform pack,\" \"video distribution,\" or \"content OS,\" or when John pastes a transcript and names Reward Our Heroes or a hero profession. Do NOT trigger for written blogs or pages that start as text, that is the ROH Content Writer skill, which outputs its own Distribution Snippet Pack.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:21:40.585577Z"
+    },
+    {
+      "skillId": "skill_01BWQ9n2BXhLf7fRu9RhjR7j",
+      "name": "roh-content-writer",
+      "description": "Writes content for the Reward Our Heroes Foundation, Foundation grant announcements, Hero of the Month/Year spotlights, ROH educational blogs, and copy for hero profession landing pages. Use whenever John asks to write, draft, or create anything for rewardourheroes.com or the Reward Our Heroes Foundation. Trigger on phrases like \"ROH blog,\" \"Reward Our Heroes post,\" \"grant announcement,\" \"Hero of the Month,\" \"Hero of the Year,\" \"scholarship spotlight,\" \"Foundation story,\" \"write copy for the [profession] page,\" \"VA loan blog,\" or \"veteran blog.\" Also trigger when the subject is a Wisconsin hero profession (military, veterans, law enforcement, firefighters, EMS, healthcare workers, teachers) and the writing is for ROH rather than Integrity Homes. Do NOT trigger for Integrity Homes blog posts that merely mention ROH in the footer, that's the Blog Post Writer skill.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:21:35.082624Z"
+    },
+    {
+      "skillId": "morning",
+      "name": "morning",
+      "description": "Render the user's morning brief as a styled HTML artifact, or set it up as a recurring weekday task. Use only when the user explicitly asks to run, see, or set up their morning brief, or if they invoke /morning by name. A question about their day, schedule, or calendar is not by itself a request for the brief; answer it directly instead.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-08-14T00:06:41.628595Z"
+    },
+    {
+      "skillId": "skill_01N4cARSHqPL4jbdAn8UkWs3",
+      "name": "market-report-page",
+      "description": "Builds the unified monthly Market Report page for Integrity Homes — ONE permanent URL per city that overwrites every month. This skill REPLACES the old nerd-page and market-overview-hub skills, combining the deep-dive data of the Nerd Page (SVG charts, full stat grid, price-range supply table, zip velocity table, FAQ) with the evergreen, authority-building structure of the Market Overview Hub (permanent URL, archive accordion, schools section, city personality intros). Outputs a complete, Lofty CMS-ready HTML file with inline CSS, three SVG charts, JSON-LD @graph schema, speakable classes, and a sticky CTA bar. Six Dane County cities: Madison, Sun Prairie, DeForest, Verona, Waunakee, Middleton. Trigger when John says: market report, monthly report, \"do the [city] report,\" \"run the report,\" \"update the [city] market page,\" or uploads a city PDF and names a city. This is now the ONLY monthly market page per city.",
+      "source": "custom",
+      "updatedAt": "2026-06-01T20:58:16.479272Z"
+    },
+    {
+      "skillId": "skill_01Godu5HvnvWGaFgm7kd1MDR",
+      "name": "transaction-coordinator",
+      "description": "Transaction coordination reference for Integrity Homes. Use when John or Lindsay need to check transaction status, track deadlines and contingencies (earnest money, inspection, radon, appraisal, financing, home sale contingency, well/water/septic, closing), flag at-risk or missed deadlines, or draft the weekly transaction update email. Works alongside the separate Transaction Tracker doc and Transaction_Master_Checklist sheet (source-of-truth data, kept as their own files, not embedded here) and the transaction-email-templates skill (approved email wording). Trigger on: transaction status, what's due this week, deadline check, weekly update, contingency status, is anything at risk, transaction coordinator, TC checklist.",
+      "source": "custom",
+      "updatedAt": "2026-07-21T20:12:28.804655Z"
+    },
+    {
+      "skillId": "skill_01MP2kFzvB2zpRuGzmNhP9gv",
+      "name": "email-newsletter-writer",
+      "description": "Writes real estate email newsletters with section structure, subject lines, body copy, and CTAs for Integrity Homes. Use for any email to John's contact list via Lofty, Follow Up Boss, or Kit (ConvertKit).",
+      "source": "custom",
+      "updatedAt": "2026-03-27T13:04:52.225282Z"
+    },
+    {
+      "skillId": "skill_01Hvr33nXVKEQRr3jq4wg3yQ",
+      "name": "lofty-blog-html-builder",
+      "description": "Converts blog content into gold-standard HTML for Lofty CMS. Outputs complete HTML with inline CSS, JSON-LD schema, speakable classes, geo meta tags, and two-column layout. Use after drafting content with Blog Post Writer.",
+      "source": "custom",
+      "updatedAt": "2026-05-10T20:58:14.465974Z"
+    },
+    {
+      "skillId": "skill_01TpoRqPasPmoV2kL9YNkAVc",
+      "name": "blog-post-writer",
+      "description": "Writes SEO and AI-search-optimized blog posts for Integrity Homes. Handles market updates, advice, listings, local topics, and repurposed video content. Follows the Integrity Homes 9-document content system.",
+      "source": "custom",
+      "updatedAt": "2026-08-14T04:21:45.882440Z"
+    },
+    {
+      "skillId": "skill_01GMZm5RPbQhT2VUHK81NPE8",
+      "name": "transaction-email-templates",
+      "description": "Integrity Homes' library of 10 reusable real estate transaction emails for John Reuter. Use whenever John needs to write, draft, fill in, or send a client/agent/title-company email during a transaction. Trigger on: seller information questionnaire, new file request to title company, accepted offer notice to co-op agent or lender, accepted offer internal handoff/intake, 'under contract' email to buyer or seller, new transaction summary, closing day tomorrow reminder, congratulations on your new home / post-closing, and offer to purchase (OTP) cover email. Also trigger on phrases like 'transaction email', 'under contract email', 'new file request', 'OTP cover', 'closing reminder', 'title company email', 'handoff to admin', 'congrats email', or naming any of the 10 templates. When triggered, pick the matching template, fill the [bracketed] fields from what John provides (ask only for fields you can't infer), and keep the exact wording, structure, and sign-off.",
+      "source": "custom",
+      "updatedAt": "2026-06-09T23:24:32.311544Z"
+    },
+    {
+      "skillId": "skill_01J92HfKyjjJYfpJbeFFTK4L",
+      "name": "blog-create",
+      "description": "One-command, end-to-end blog creation for Integrity Homes. When John says \"create a blog,\" \"write a blog about X,\" \"do a blog on X,\" \"make me a blog post,\" or similar, this orchestrator runs the full chain - research, write, package (SEO metadata + internal links + image), and build the final Lofty-ready HTML - and delivers one publish-ready file. It does the work by calling three existing skills in order: Blog Post Writer (drafts the content), Blog SEO Packager (slug, meta, tags, categories, internal links from a sitemap, image candidate, Gemini prompt), and Lofty Blog HTML Builder (final HTML). Use this for AD-HOC blog topics on demand. Do NOT use for the scheduled weekly market/pillar content - that belongs to the Integrity Blog Pipeline skill, which this orchestrator hands off to. Do NOT trigger for ROH content (ROH Content Writer).",
+      "source": "custom",
+      "updatedAt": "2026-06-21T22:04:45.515736Z"
+    },
+    {
+      "skillId": "skill_01GWw6tWALNmPmR56TUNVpbA",
+      "name": "blog-seo-packager",
+      "description": "Pre-publish SEO and linking packager for Integrity Homes blog posts. Takes a finished or near-finished blog draft and produces the publish-ready metadata bundle - slug, meta description, meta tags, categories - plus ranked internal links pulled from a sitemap John provides, image candidates matched from the media-vault Google Sheet, an AI-visibility cross-check (Semrush AI Visibility + optional ChatGPT/Perplexity tabs in Cowork), and a ready-to-paste Gemini image-generation prompt. Use AFTER a blog is drafted and BEFORE (or alongside) the Lofty Blog HTML Builder. Trigger when John says: \"package this blog,\" \"SEO package,\" \"get me the slug and meta,\" \"find internal links for this post,\" \"what should this blog link to,\" \"find a blog image,\" \"metadata for this post,\" or drops a sitemap and asks for linking. Do NOT use this to write blog content (that's Blog Post Writer) or to build final HTML (that's Lofty Blog HTML Builder).",
+      "source": "custom",
+      "updatedAt": "2026-06-21T22:04:51.036286Z"
+    },
+    {
+      "skillId": "skill_01UKW95LccwUda7ExpfQoAq2",
+      "name": "mls-data-analyzer",
+      "description": "Analyzes uploaded MLS spreadsheets for pricing trends, DOM patterns, inventory, and comps in Dane County, Wisconsin. Use when John uploads real estate data for analysis or CMA prep.",
+      "source": "custom",
+      "updatedAt": "2026-03-27T13:04:43.303682Z"
+    },
+    {
+      "skillId": "skill_01Fq6irrBVVF7D55ThbFp1C7",
+      "name": "price-reduction-angle-generator",
+      "description": "Generates data-backed positioning for seller price reduction conversations in Dane County, Wisconsin. Use when an Integrity Homes listing is stale and John needs a strategy for adjusting price.",
+      "source": "custom",
+      "updatedAt": "2026-03-27T13:04:46.124210Z"
+    },
+    {
+      "skillId": "skill_018XkrSV1E31uyWu5hQz6EHu",
+      "name": "listing-photo-captioner",
+      "description": "Writes MLS photo descriptions from uploaded listing photos using image recognition. Use when John uploads property photos and needs captions for Integrity Homes listings.",
+      "source": "custom",
+      "updatedAt": "2026-03-27T13:04:40.914981Z"
+    },
+    {
+      "skillId": "skill-creator",
+      "name": "skill-creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "source": "anthropic-example",
+      "updatedAt": "2026-08-14T00:06:41.225431Z"
+    },
+    {
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+      "source": "anthropic",
+      "updatedAt": "2026-08-03T21:01:25.792740Z"
+    },
+    {
+      "skillId": "pdf",
+      "name": "pdf",
+      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "source": "anthropic",
+      "updatedAt": "2026-07-10T19:23:15.432550Z"
+    },
+    {
+      "skillId": "pptx",
+      "name": "pptx",
+      "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slides,\" \"presentation,\" or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. If a .pptx or .potx file needs to be opened, created, or touched, use this skill.",
+      "source": "anthropic",
+      "updatedAt": "2026-08-03T21:01:25.771949Z"
+    },
+    {
+      "skillId": "docx",
+      "name": "docx",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.",
+      "source": "anthropic",
+      "updatedAt": "2026-08-03T21:01:25.747439Z"
+    },
+    {
+      "skillId": "skill_01BTsA37794zf4nW26F5XKnt",
+      "name": "listing-remarks-writer",
+      "description": "Writes noun-dense, AI-searchable MLS listing descriptions optimized for Zillow, ChatGPT, and Google AI Overviews. Use when writing or rewriting listing remarks for Integrity Homes listings.",
+      "source": "custom",
+      "updatedAt": "2026-03-27T13:04:37.633740Z"
+    }
+  ]
+}

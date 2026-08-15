@@ -1,0 +1,445 @@
+{
+  "name": "IH_Subdivisions",
+  "description": "Full code export of the Integrity Homes Subdivisions project: Waunakee short-form video cut sheets, driving-tour transcripts, Gemini transcription script, and the custom skill library.",
+  "exported": "2026-08-15",
+  "source_folder": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions",
+  "source_skills": "~/.claude/skills/synced (custom skills only; Anthropic built-ins excluded)",
+  "counts": {
+    "total_files": 61,
+    "cut_sheets": 8,
+    "planning_docs": 4,
+    "transcripts": 14,
+    "skills": 18,
+    "archived_originals": 12
+  },
+  "skills": [
+    "blog-create",
+    "blog-post-writer",
+    "blog-seo-packager",
+    "brand-style-guide",
+    "email-newsletter-writer",
+    "instagram-caption-writer",
+    "integrity-blog-pipeline",
+    "listing-photo-captioner",
+    "listing-remarks-writer",
+    "lofty-blog-html-builder",
+    "market-report-page",
+    "mls-data-analyzer",
+    "price-reduction-angle-generator",
+    "reel-script-writer",
+    "roh-content-writer",
+    "roh-video-distribution",
+    "transaction-coordinator",
+    "transaction-email-templates"
+  ],
+  "excluded_builtin_skills": [
+    "docx",
+    "xlsx",
+    "pptx",
+    "pdf",
+    "skill-creator",
+    "morning"
+  ],
+  "external_dependencies": [
+    {
+      "name": "Raw video footage",
+      "location": "Google Drive footage folder",
+      "used_by": "content/cut-sheets/*"
+    },
+    {
+      "name": "Integrity_Homes_OPERATING_SYSTEM workbook",
+      "location": "Google Sheets, tab 'v1.4 Market Rotation'",
+      "used_by": "integrity-blog-pipeline, calendar revision"
+    },
+    {
+      "name": "Social Distribution Calendar",
+      "location": "ClickUp > IHWI Content System > 01 Content Production",
+      "used_by": "content/planning/Calendar_Revision_Summary_2026-06-28.md"
+    },
+    {
+      "name": "Image Vault",
+      "location": "Google Sheet",
+      "used_by": "blog-seo-packager"
+    },
+    {
+      "name": "Lofty CMS",
+      "location": "lofty.com",
+      "used_by": "lofty-blog-html-builder, market-report-page"
+    },
+    {
+      "name": "GEMINI_API_KEY",
+      "location": "environment variable",
+      "used_by": "scripts/transcribe_videos.py"
+    }
+  ],
+  "open_flags": [
+    "Only ONE Dunwoody clip exists; Short 01 was written for two. Both entries point to the same real file.",
+    "No 'Park-Pavilion-Amenity-Close_Horizontal' clip exists; a real Southbridge pool clip is substituted.",
+    "Shorts 05 and 06: confirm which Southbridge on-camera file contains the spoken line (filenames are near-identical)."
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 242,
+      "sha256_16": "1b09155530ea8d2f"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 3593,
+      "sha256_16": "54487b3736bc8784"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6130,
+      "sha256_16": "84afd11898d823f4"
+    },
+    {
+      "path": "content/cut-sheets/00_MASTER_BROLL_SPECIFIC_Kilkenny_Southbridge_Editor_Cut_Sheets_CORRECTED.md",
+      "bytes": 12472,
+      "sha256_16": "e4c4595eedb5c3bb",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\00_MASTER_BROLL_SPECIFIC_Kilkenny_Southbridge_Editor_Cut_Sheets_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/01_Kilkenny_Farms_West_vs_Southbridge_BROLL_CUT_SHEET_CORRECTED.md",
+      "bytes": 12020,
+      "sha256_16": "c68edf607d7b92a7",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\01_Kilkenny_Farms_West_vs_Southbridge_BROLL_CUT_SHEET_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/02_If_I_Were_Building_in_Kilkenny_West_BROLL_CUT_SHEET_CORRECTED.md",
+      "bytes": 10781,
+      "sha256_16": "0ab7c3d95c1c5eeb",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\02_If_I_Were_Building_in_Kilkenny_West_BROLL_CUT_SHEET_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/03_Dont_Assume_the_Pool_in_Southbridge_BROLL_CUT_SHEET_CORRECTED.md",
+      "bytes": 9495,
+      "sha256_16": "0a8fb055c3040639",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\03_Dont_Assume_the_Pool_in_Southbridge_BROLL_CUT_SHEET_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/04_Ranking_Waunakees_Parks_BROLL_CUT_SHEET_CORRECTED.md",
+      "bytes": 8818,
+      "sha256_16": "aca33eb4e2791742",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\04_Ranking_Waunakees_Parks_BROLL_CUT_SHEET_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/05_More_Than_a_Garage_Door_Southbridge_Community_BROLL_CUT_SHEET_CORRECTED.md",
+      "bytes": 8395,
+      "sha256_16": "d60d6e37660ef1bd",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\05_More_Than_a_Garage_Door_Southbridge_Community_BROLL_CUT_SHEET_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/06_Southbridge_Isnt_One_Neighborhood_BROLL_CUT_SHEET_CORRECTED.md",
+      "bytes": 10161,
+      "sha256_16": "4629e06e1821cf50",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\06_Southbridge_Isnt_One_Neighborhood_BROLL_CUT_SHEET_CORRECTED.docx"
+    },
+    {
+      "path": "content/cut-sheets/READ_ME_FIRST.md",
+      "bytes": 2916,
+      "sha256_16": "a01bfcbf39a3b7a0",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Corrected Cut Sheets\\\\READ ME FIRST.docx"
+    },
+    {
+      "path": "content/planning/CORRECTED_Clip_Map_Real_Drive_Filenames.md",
+      "bytes": 11815,
+      "sha256_16": "838ec061aa5ca70f",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\CORRECTED_Clip_Map_Real_Drive_Filenames.docx"
+    },
+    {
+      "path": "content/planning/Calendar_Revision_Summary_2026-06-28.md",
+      "bytes": 2764,
+      "sha256_16": "272b896d61e02066",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Calendar_Revision_Summary_2026-06-28.docx"
+    },
+    {
+      "path": "content/planning/Kilkenny_vs_Southbridge_Short_1_Handoff.md",
+      "bytes": 13158,
+      "sha256_16": "4625588664c2dbf8",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Kilkenny vs Southbridge Short #1 Handoff.docx"
+    },
+    {
+      "path": "content/planning/Marketing_Video_Handoff_Plan.txt",
+      "bytes": 13665,
+      "sha256_16": "e5fdac8dbe38aa90",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Marketing Video Handoff Plan.pdf"
+    },
+    {
+      "path": "content/transcripts/IMG_0758.md",
+      "bytes": 2467,
+      "sha256_16": "63329e592d22726b",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0758.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0759.md",
+      "bytes": 197,
+      "sha256_16": "a629f9fda0b2e03b",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0759.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0760.md",
+      "bytes": 169,
+      "sha256_16": "9265535154ccb52f",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0760.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0761.md",
+      "bytes": 169,
+      "sha256_16": "29cba6b464e06d39",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0761.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0766.md",
+      "bytes": 5480,
+      "sha256_16": "d22e4ec0d56f6325",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0766.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0768.md",
+      "bytes": 845,
+      "sha256_16": "d36632b04c78dd25",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0768.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0781.md",
+      "bytes": 949,
+      "sha256_16": "dd7a10953981ec2c",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0781.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0782.md",
+      "bytes": 1041,
+      "sha256_16": "62093f9d277416e5",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0782.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0784.md",
+      "bytes": 1143,
+      "sha256_16": "c8e2fed0b09ebbc1",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0784.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0786.md",
+      "bytes": 1196,
+      "sha256_16": "af73af47ebf29139",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0786.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0793.md",
+      "bytes": 748,
+      "sha256_16": "f15ab56eb10a761d",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0793.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0796.md",
+      "bytes": 734,
+      "sha256_16": "55bdf0e4acd03ef5",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0796.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0798.md",
+      "bytes": 1405,
+      "sha256_16": "aab79e4d34188343",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0798.md"
+    },
+    {
+      "path": "content/transcripts/IMG_0799.md",
+      "bytes": 175,
+      "sha256_16": "abc0bf9072717bc8",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\Video Transcripts\\\\IMG_0799.md"
+    },
+    {
+      "path": "originals/cut-sheets/00_MASTER_BROLL_SPECIFIC_Kilkenny_Southbridge_Editor_Cut_Sheets_CORRECTED.docx",
+      "bytes": 40253,
+      "sha256_16": "bc6e4fbb7ea471a2",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/01_Kilkenny_Farms_West_vs_Southbridge_BROLL_CUT_SHEET_CORRECTED.docx",
+      "bytes": 40212,
+      "sha256_16": "a5a151b47dafcba2",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/02_If_I_Were_Building_in_Kilkenny_West_BROLL_CUT_SHEET_CORRECTED.docx",
+      "bytes": 40068,
+      "sha256_16": "2aec91f00e4430ec",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/03_Dont_Assume_the_Pool_in_Southbridge_BROLL_CUT_SHEET_CORRECTED.docx",
+      "bytes": 39913,
+      "sha256_16": "9e22e6073aea3c78",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/04_Ranking_Waunakees_Parks_BROLL_CUT_SHEET_CORRECTED.docx",
+      "bytes": 39748,
+      "sha256_16": "59ade8ba18811297",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/05_More_Than_a_Garage_Door_Southbridge_Community_BROLL_CUT_SHEET_CORRECTED.docx",
+      "bytes": 39808,
+      "sha256_16": "022abbe438cc74de",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/06_Southbridge_Isnt_One_Neighborhood_BROLL_CUT_SHEET_CORRECTED.docx",
+      "bytes": 39848,
+      "sha256_16": "01f9c98dc8b94850",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/cut-sheets/READ_ME_FIRST.docx",
+      "bytes": 38205,
+      "sha256_16": "059a378c9fd60d2c",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/planning/CORRECTED_Clip_Map_Real_Drive_Filenames.docx",
+      "bytes": 39201,
+      "sha256_16": "2a0be8f3b6004214",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/planning/Calendar_Revision_Summary_2026-06-28.docx",
+      "bytes": 38115,
+      "sha256_16": "e689f1cdfd6e1916",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/planning/Kilkenny_vs_Southbridge_Short_1_Handoff.docx",
+      "bytes": 15162,
+      "sha256_16": "ecc39e307381c206",
+      "role": "archived original"
+    },
+    {
+      "path": "originals/planning/Marketing_Video_Handoff_Plan.pdf",
+      "bytes": 227594,
+      "sha256_16": "9a058e0ee8f2acae",
+      "role": "archived original"
+    },
+    {
+      "path": "scripts/transcribe_videos.py",
+      "bytes": 5846,
+      "sha256_16": "e88a800839bfd631",
+      "converted_from": "C:\\Users\\admin\\OneDrive\\Documents\\Claude\\Projects\\Subdivisions\\transcribe_videos.py"
+    },
+    {
+      "path": "skills/_synced_manifest.json",
+      "bytes": 17615,
+      "sha256_16": "df7bdfa91ea80632",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/blog-create/SKILL.md",
+      "bytes": 5576,
+      "sha256_16": "9c4c9aad07c91feb",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/blog-post-writer/SKILL.md",
+      "bytes": 4617,
+      "sha256_16": "1d59b36aef53db2a",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/blog-seo-packager/SKILL.md",
+      "bytes": 9676,
+      "sha256_16": "7fe76fa7c5857876",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/brand-style-guide/SKILL.md",
+      "bytes": 4232,
+      "sha256_16": "868e9deb2e7828c4",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/email-newsletter-writer/SKILL.md",
+      "bytes": 6009,
+      "sha256_16": "389618b8ffeeaed2",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/instagram-caption-writer/SKILL.md",
+      "bytes": 5688,
+      "sha256_16": "c32ac3073b01c744",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/integrity-blog-pipeline/SKILL.md",
+      "bytes": 46296,
+      "sha256_16": "fba6ff39f9619e01",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/listing-photo-captioner/SKILL.md",
+      "bytes": 3589,
+      "sha256_16": "a2466f5575cb3976",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/listing-remarks-writer/SKILL.md",
+      "bytes": 5292,
+      "sha256_16": "cfe18f71296ab354",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/lofty-blog-html-builder/SKILL.md",
+      "bytes": 8575,
+      "sha256_16": "b7931a28c7f7b999",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/market-report-page/SKILL.md",
+      "bytes": 27962,
+      "sha256_16": "f33ffcf076ad91d4",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/mls-data-analyzer/SKILL.md",
+      "bytes": 6277,
+      "sha256_16": "c735d7a504429119",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/price-reduction-angle-generator/SKILL.md",
+      "bytes": 5495,
+      "sha256_16": "36b82b798a1ba81d",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/reel-script-writer/SKILL.md",
+      "bytes": 4543,
+      "sha256_16": "dd7a428090d23bdf",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/roh-content-writer/SKILL.md",
+      "bytes": 6151,
+      "sha256_16": "a95f30d113477b2c",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/roh-video-distribution/SKILL.md",
+      "bytes": 5573,
+      "sha256_16": "9dd3958434f53a6e",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/transaction-coordinator/SKILL.md",
+      "bytes": 4664,
+      "sha256_16": "e07e2803884d597b",
+      "role": "skill source (verbatim from synced account skills)"
+    },
+    {
+      "path": "skills/transaction-email-templates/SKILL.md",
+      "bytes": 11475,
+      "sha256_16": "75cf1488fb29469b",
+      "role": "skill source (verbatim from synced account skills)"
+    }
+  ]
+}
