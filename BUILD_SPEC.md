@@ -31,40 +31,40 @@ Everything below this line is unbuilt as of 2026-08-16.
 
 ## 1. Claude leg
 
-**Goal:** same research depth as the Perplexity leg, using Claude Code's own
-`WebSearch`/`WebFetch` instead of the Perplexity API — a second, independent
-pass so systematic gaps in one search engine's index don't become blind spots
-in the final brief.
+**No script or API integration needed.** Unlike Perplexity and OpenAI, this
+isn't an external service — it's Claude (this session, or local Claude Code)
+using its own built-in `WebSearch`/`WebFetch` tools directly. "Building" this
+leg just means *running* the research task, not integrating an API.
 
 **Reuse, don't reinvent the prompt.** `research_perplexity.py`'s
 `PROMPT_TEMPLATE` and `CONVENIENCES_PROMPT_TEMPLATE` constants are
 API-agnostic research instructions — they don't mention Perplexity anywhere
-except the file's own docstring/output naming. Reuse them verbatim as the
-brief Claude Code answers via its own tools, so the two legs are actually
-comparable (same 16 sections, same "verify don't guess," same MLS/Redfin
-exclusions, same name-collision discipline).
+except the file's own docstring/output naming. Feed them to Claude verbatim
+as the task to answer via `WebSearch`/`WebFetch`, so the legs stay comparable
+(same 16 sections, same "verify don't guess," same MLS/Redfin exclusions,
+same name-collision discipline).
 
-**Build:**
-- A script or slash-command-style workflow that, given `Subdivision` + `City`:
-  1. Runs the equivalent of the main brief (sections A–P) via `WebSearch`/`WebFetch`.
-  2. Runs the equivalent of the conveniences leg, anchored to the streets
-     confirmed in step 1 — same auto-chaining behavior as the Perplexity
-     script already does (see `extract_streets_context()` in
-     `research_perplexity.py` for the pattern — section D extraction via
-     regex on the markdown headers).
-  3. Writes `research/<slug>-raw-claude.md` and `research/<slug>-conveniences-claude.md`,
-     matching the Perplexity leg's file-header format (model/date/tokens-if-knowable,
-     "not a finished brief" merge note) so downstream tooling can treat all
-     legs uniformly.
-- Batch-capable the same way: read `waunakee_batch.txt` (or whatever the
-  current target list file is), loop unattended.
+**Execution options, in increasing order of scale:**
+- **One subdivision, ad hoc:** just ask — "research Heritage Hills, Waunakee
+  using the PROMPT_TEMPLATE in research_perplexity.py, write it to
+  research/heritage-hills-raw-claude.md, then do the same conveniences
+  follow-up anchored to the confirmed streets." No setup required.
+- **A batch, unattended:** use the `Workflow` tool to fan out one `agent()`
+  call per subdivision (each with `WebSearch`/`WebFetch` access), same
+  prompt, writing to `research/<slug>-raw-claude.md` /
+  `research/<slug>-conveniences-claude.md`. This parallelizes naturally
+  where the Perplexity/OpenAI scripts have to loop sequentially.
+- File-header format (model/date, "not a finished brief" merge note) should
+  match the Perplexity leg's convention so downstream tooling treats all legs
+  uniformly — just note "Claude (WebSearch)" instead of a model/token count
+  that doesn't apply the same way.
 
-**Open question to resolve in Claude Code, not here:** does per-subdivision
-web search burn meaningful budget/time at 50x scale? Decide whether to run
+**Open question, still real even without a script:** running a full 16-section
+web-search research pass per subdivision at 50x scale is a lot of tool calls
+and tokens even without an external API bill attached. Decide whether to run
 this leg for every subdivision or only ones where the Perplexity leg came
 back thin/single-sourced (see Heritage Hills' single-source caveat in
-`PIPELINE_STATUS.md`) — that's a real cost/thoroughness tradeoff worth
-surfacing to John rather than deciding silently.
+`PIPELINE_STATUS.md`) — worth surfacing to John rather than deciding silently.
 
 ---
 
