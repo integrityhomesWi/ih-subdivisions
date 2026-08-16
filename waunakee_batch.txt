@@ -1,0 +1,20 @@
+# Waunakee batch — one "Subdivision|City" pair per line.
+# Lines starting with # are ignored.
+#
+# Start with 3-5 to check research quality before running a full city.
+# Use the Semrush-verified name variant, not the folder name.
+
+Heritage Hills|Waunakee
+Westbridge|Waunakee
+Savannah Village|Waunakee
+
+# --- rest of Waunakee, uncomment once the test batch looks right ---
+# Golden Ponds|Waunakee
+# Carriage Ridge|Waunakee
+# Castle Crest|Waunakee
+# Kilkenny Farms|Waunakee
+
+# --- already have pages; research is valid, HTML needs rebuilding ---
+# Do NOT re-research these unless the existing brief is thin:
+# Kilkenny Farms West, Six Mile Creek, Southbridge,
+# Arboretum Village, Centennial Heights
