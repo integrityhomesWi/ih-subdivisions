@@ -174,13 +174,25 @@ Use the Semrush-verified name variant as primary. Several subdivisions have comp
 
 ## Task list
 
-### Blocking — before the next build batch
+### ✅ Proven end-to-end 2026-08-16 (system test, not a real build)
 
-1. **Test the research pipeline on one subdivision.** Scripts exist (`run_research.py`, `research_perplexity.py`, `research_openai.py`) or write your own. Run "Heritage Hills" / "Waunakee". Verify output has specific streets, real HOA details, named businesses, sourced claims — not generic filler. If thin, adjust before spending across 126 subdivisions.
+Ran the full loop once on **Kilkenny Farms, Waunakee** — chosen specifically because it's a genuinely "Not Started" record AND the exact Kilkenny-Farms/Kilkenny-Farms-West conflict pair this project exists to prevent errors on:
 
-2. **Add the Quick-Answer block to the NAS master template.** Spec: `subdivision-quick-answer-block.md` (CSS, HTML, four-slot fact template, worked example).
+1. Phase 1b archive check — confirmed via live Drive search that no "Kilkenny Farms" (non-West) research or page exists. Passed.
+2. Perplexity leg (`research_perplexity.py`) — ran clean, both main + conveniences files.
+3. Claude leg — ran as a background agent using the same prompt templates, both main + conveniences files. `WebFetch` still blocked in this environment (snippet-only via `WebSearch`) — a real quality ceiling worth fixing (see below), not a blocker.
+4. **Merge step — built and run for the first time.** `research/kilkenny-farms-research.md`. The two legs actually disagreed on the single most load-bearing fact (whether Kilkenny Farms West is a phase of Kilkenny Farms or a separate subdivision) — flagged explicitly per the union rules rather than silently resolved, with the evidence and reasoning laid out for John to confirm.
+5. **Airtable status write-back — proven for the first time.** Kilkenny Farms record updated to `Research Done`, Owner `Claude Code`.
 
-3. **Add the corrected `@graph` to the NAS master template.** Spec: `subdivision-schema-standard.md`.
+**Open finding from this test:** `WebFetch` (full page reads) is blocked by this Claude Code environment's network policy for every external domain, even after John widened "Network access" to "Full" earlier — that setting only cleared enough for direct API calls (Perplexity, this session's Airtable/Drive MCP tools), not general web browsing. The Claude leg is currently limited to `WebSearch` snippets as a result. If this matters enough to fix, it needs a different/broader network policy change than the one already tried — worth revisiting in the environment settings.
+
+### Blocking — before the next REAL build batch
+
+1. ~~Test the research pipeline on one subdivision~~ — done, see above.
+
+2. **Add the Quick-Answer block to the NAS master template.** ✅ Done 2026-08-16 — `templates/kilkenny-farms-west-v8-MASTER-TEMPLATE.html`. Not yet pushed to Drive/Lofty; staged for review.
+
+3. **Add the corrected `@graph` to the NAS master template.** ✅ Done 2026-08-16, same file as above.
 
 ### Cleanup — not blocking
 
