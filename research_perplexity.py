@@ -181,13 +181,27 @@ A short markdown brief with a table or bulleted list per category, plus a "Sourc
 
 def extract_streets_context(brief_content: str, max_chars: int = 2500) -> str:
     """Pull section D (Location, Streets and Boundaries) out of a full brief's
-    markdown, to feed forward into the conveniences leg as its street anchor —
-    so the confirmed streets never have to be retyped by hand between runs."""
-    match = re.search(r"##\s*D\.[^\n]*\n(.*?)(?=\n##\s*[A-Z]\.|\Z)", brief_content, re.DOTALL)
-    if not match:
+    text, to feed forward into the conveniences leg as its street anchor — so
+    the confirmed streets never have to be retyped by hand between runs.
+
+    Different models format the A-P section headers differently — Perplexity
+    tends to write "## D. Location..." (markdown), GPT models have been seen
+    writing plain "D.  Location..." with no leading #. Match a line-start
+    single capital letter + period + a real word, with 0-3 optional leading
+    '#' characters, so either style works."""
+    pattern = re.compile(r"(?m)^\s{0,3}#{0,3}\s*([A-Z])\.\s+\S.*$")
+    matches = list(pattern.finditer(brief_content))
+    if not matches:
         return ""
-    section = match.group(1).strip()
-    return section[:max_chars]
+
+    for i, m in enumerate(matches):
+        if m.group(1) != "D":
+            continue
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(brief_content)
+        return brief_content[start:end].strip()[:max_chars]
+
+    return ""
 
 
 def slugify(name: str) -> str:
