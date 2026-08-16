@@ -14,6 +14,12 @@ Usage:
     python research_perplexity.py "Ardent Glen" "Verona" --model sonar-deep-research
     python research_perplexity.py --batch waunakee_batch.txt
 
+    # Second leg: narrow, streets-anchored nearby-conveniences lookup, meant to
+    # patch section I of a brief that came back thin. Run AFTER the main pass
+    # so you have confirmed streets to anchor it (prevents pulling in a
+    # same-named place in a different city).
+    python research_perplexity.py "Heritage Hills" "Waunakee" --conveniences --streets "N Division Street, Patrick Ave, Hillcrest Drive"
+
 Requires:
     PERPLEXITY_API_KEY environment variable
     pip install requests
@@ -132,6 +138,46 @@ QUALITY CHECK BEFORE ANSWERING - confirm that:
 If public information is insufficient, don't pad with generic language - give verified findings plus a precise list of records/people/field observations needed to finish the file."""
 
 
+CONVENIENCES_PROMPT_TEMPLATE = """You are finding real, named, nearby conveniences for a specific residential subdivision, for Wisconsin real estate agent John Reuter's neighborhood guide.
+
+SUBDIVISION: {subdivision}
+CITY: {city}, Wisconsin
+CONFIRMED STREETS INSIDE THIS SUBDIVISION (anchor every distance/direction to these, not to the subdivision name alone): {streets}
+
+CRITICAL — NAME COLLISION WARNING
+
+Subdivision and apartment-complex names repeat across different cities and states. Before using ANY source, confirm it is actually describing a place in {city}, Wisconsin, at or near the streets listed above — not a same-named or similarly-named development elsewhere (a different city, a different state, an apartment complex that borrowed the name, etc.). If a search result's location cannot be confirmed as {city}, Wisconsin, DISCARD it rather than include it. Say so explicitly if you discard a result for this reason.
+
+TASK
+
+Find real, currently-operating, named businesses and services within a realistic driving/walking distance of the streets listed above. For each one give: name, category, approximate address or cross-street, and approximate drive or walk time/distance from the subdivision. Do not use vague category language ("shopping and dining are nearby") — name the actual business.
+
+Cover:
+- Grocery stores
+- Gas stations / convenience stores
+- Coffee shops
+- Restaurants (a mix of quick-service and sit-down)
+- Pharmacy / urgent care / healthcare
+- Public library
+- Nearest parks (municipal, not the subdivision's own if already covered elsewhere)
+- Nearest elementary/middle/high school buildings (by name and approximate distance, not attendance-boundary confirmation — that's handled separately)
+- Route/distance to downtown {city}
+- Route/distance to the nearest major highway on-ramp
+- Approximate drive time to Madison-area employment centers and to Dane County Regional Airport
+
+RULES
+
+* Only name a business if you can confirm it is a real, current business near this location — do not invent a plausible-sounding name.
+* If you cannot confirm a category has a nearby option, say so explicitly rather than filling the gap with a generic chain guess.
+* Give approximate distances in both miles and minutes where possible, and name the route/road used.
+* Date the information (today's date) since businesses open/close.
+* This supplements a separate broader research brief for the same subdivision — do not repeat unrelated sections like HOA, schools-district-assignment, or pricing; conveniences only.
+
+OUTPUT FORMAT
+
+A short markdown brief with a table or bulleted list per category, plus a "Sources" section with direct links, plus a "Discarded due to name collision" section listing anything you filtered out and why."""
+
+
 def slugify(name: str) -> str:
     """Lowercase, hyphenated, no punctuation — matches the URL slug convention."""
     slug = name.lower().strip()
@@ -140,9 +186,8 @@ def slugify(name: str) -> str:
     return slug.strip("-")
 
 
-def research(subdivision: str, city: str, model: str, api_key: str,
-             timeout: int = 300) -> dict:
-    """Send the research prompt to Perplexity. Returns the parsed response."""
+def call_api(prompt: str, model: str, api_key: str, timeout: int = 300) -> dict:
+    """Send a prompt to Perplexity. Returns the parsed response."""
     payload = {
         "model": model,
         "messages": [
@@ -154,8 +199,7 @@ def research(subdivision: str, city: str, model: str, api_key: str,
                     "confirm, and you never fabricate specifics to fill a gap."
                 ),
             },
-            {"role": "user", "content": PROMPT_TEMPLATE.format(
-                subdivision=subdivision, city=city)},
+            {"role": "user", "content": prompt},
         ],
         "temperature": 0.2,
     }
@@ -179,6 +223,21 @@ def research(subdivision: str, city: str, model: str, api_key: str,
     response.raise_for_status()
 
     return response.json()
+
+
+def research(subdivision: str, city: str, model: str, api_key: str,
+             timeout: int = 300) -> dict:
+    """Send the full research prompt to Perplexity. Returns the parsed response."""
+    prompt = PROMPT_TEMPLATE.format(subdivision=subdivision, city=city)
+    return call_api(prompt, model, api_key, timeout)
+
+
+def research_conveniences(subdivision: str, city: str, streets: str, model: str,
+                           api_key: str, timeout: int = 300) -> dict:
+    """Send the narrow, streets-anchored conveniences prompt. Returns the parsed response."""
+    prompt = CONVENIENCES_PROMPT_TEMPLATE.format(
+        subdivision=subdivision, city=city, streets=streets)
+    return call_api(prompt, model, api_key, timeout)
 
 
 def write_output(subdivision: str, city: str, model: str, data: dict) -> Path:
@@ -216,11 +275,59 @@ def write_output(subdivision: str, city: str, model: str, data: dict) -> Path:
     return path
 
 
+def write_conveniences_output(subdivision: str, city: str, streets: str,
+                               model: str, data: dict) -> Path:
+    """Write the raw conveniences leg to research/<slug>-conveniences.md."""
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    path = OUTPUT_DIR / f"{slugify(subdivision)}-conveniences.md"
+
+    content = data["choices"][0]["message"]["content"]
+    citations = data.get("citations", [])
+    usage = data.get("usage", {})
+
+    lines = [
+        f"# {subdivision} — {city}, WI — Nearby Conveniences",
+        "",
+        "**Research leg:** Perplexity (conveniences follow-up)  ",
+        f"**Model:** {model}  ",
+        f"**Retrieved:** {date.today().isoformat()}  ",
+        f"**Anchored streets:** {streets}  ",
+        f"**Tokens:** {usage.get('total_tokens', 'n/a')}",
+        "",
+        "> Patches section I of the main raw-perplexity brief for this subdivision. "
+        "Merge in; don't publish standalone. Re-check name-collision discards before use.",
+        "",
+        "---",
+        "",
+        content,
+    ]
+
+    if citations:
+        lines += ["", "---", "", "## Citations (Perplexity)", ""]
+        lines += [f"{i}. {url}" for i, url in enumerate(citations, 1)]
+
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return path
+
+
 def run_one(subdivision: str, city: str, model: str, api_key: str) -> bool:
     print(f"  {subdivision} ({city})... ", end="", flush=True)
     try:
         data = research(subdivision, city, model, api_key)
         path = write_output(subdivision, city, model, data)
+        tokens = data.get("usage", {}).get("total_tokens", 0)
+        print(f"ok — {path} ({tokens:,} tokens)")
+        return True
+    except Exception as exc:
+        print(f"FAILED — {exc}")
+        return False
+
+
+def run_conveniences(subdivision: str, city: str, streets: str, model: str, api_key: str) -> bool:
+    print(f"  {subdivision} ({city}) conveniences... ", end="", flush=True)
+    try:
+        data = research_conveniences(subdivision, city, streets, model, api_key)
+        path = write_conveniences_output(subdivision, city, streets, model, data)
         tokens = data.get("usage", {}).get("total_tokens", 0)
         print(f"ok — {path} ({tokens:,} tokens)")
         return True
@@ -238,6 +345,12 @@ def main() -> None:
                         help=f"sonar | sonar-pro | sonar-deep-research (default: {DEFAULT_MODEL})")
     parser.add_argument("--batch", metavar="FILE",
                         help="Text file with one 'Subdivision|City' pair per line")
+    parser.add_argument("--conveniences", action="store_true",
+                        help="Run the narrow, streets-anchored nearby-conveniences leg instead "
+                             "of the full brief. Requires --streets. Not supported with --batch.")
+    parser.add_argument("--streets", metavar="\"Street A, Street B, ...\"",
+                        help="Confirmed streets inside the subdivision, used to anchor the "
+                             "--conveniences leg and guard against name collisions.")
     args = parser.parse_args()
 
     api_key = os.environ.get("PERPLEXITY_API_KEY")
@@ -245,6 +358,19 @@ def main() -> None:
         sys.exit("PERPLEXITY_API_KEY is not set. Set it as an environment variable.")
     if api_key.startswith("pplx-your-key"):
         sys.exit("PERPLEXITY_API_KEY still holds the placeholder value.")
+
+    if args.conveniences:
+        if args.batch:
+            parser.error("--conveniences is not supported with --batch — run it per subdivision.")
+        if not (args.subdivision and args.city):
+            parser.error("Provide a subdivision and city with --conveniences.")
+        if not args.streets:
+            parser.error("--conveniences requires --streets \"Street A, Street B, ...\" "
+                          "(pull these from the confirmed streets in the main brief).")
+        print(f"\nPerplexity conveniences leg — {args.subdivision} ({args.city}), "
+              f"model={args.model}\n")
+        ok = run_conveniences(args.subdivision, args.city, args.streets, args.model, api_key)
+        sys.exit(0 if ok else 1)
 
     if args.batch:
         pairs = []
