@@ -14,11 +14,12 @@ Usage:
     python research_perplexity.py "Ardent Glen" "Verona" --model sonar-deep-research
     python research_perplexity.py --batch waunakee_batch.txt
 
-    # Second leg: narrow, streets-anchored nearby-conveniences lookup, meant to
-    # patch section I of a brief that came back thin. Run AFTER the main pass
-    # so you have confirmed streets to anchor it (prevents pulling in a
-    # same-named place in a different city).
-    python research_perplexity.py "Heritage Hills" "Waunakee" --conveniences --streets "N Division Street, Patrick Ave, Hillcrest Drive"
+Each run does BOTH legs automatically: the full brief, then a second, narrow
+conveniences lookup anchored to the streets the first pass just confirmed
+(section D) — no copy-pasting streets between commands required. Add
+--skip-conveniences to run only the full brief. Add --conveniences with
+--streets to re-run just the conveniences leg by hand (e.g. to retry with
+different/corrected streets) without repeating the (slower, pricier) full brief.
 
 Requires:
     PERPLEXITY_API_KEY environment variable
@@ -178,6 +179,17 @@ OUTPUT FORMAT
 A short markdown brief with a table or bulleted list per category, plus a "Sources" section with direct links, plus a "Discarded due to name collision" section listing anything you filtered out and why."""
 
 
+def extract_streets_context(brief_content: str, max_chars: int = 2500) -> str:
+    """Pull section D (Location, Streets and Boundaries) out of a full brief's
+    markdown, to feed forward into the conveniences leg as its street anchor —
+    so the confirmed streets never have to be retyped by hand between runs."""
+    match = re.search(r"##\s*D\.[^\n]*\n(.*?)(?=\n##\s*[A-Z]\.|\Z)", brief_content, re.DOTALL)
+    if not match:
+        return ""
+    section = match.group(1).strip()
+    return section[:max_chars]
+
+
 def slugify(name: str) -> str:
     """Lowercase, hyphenated, no punctuation — matches the URL slug convention."""
     slug = name.lower().strip()
@@ -310,17 +322,30 @@ def write_conveniences_output(subdivision: str, city: str, streets: str,
     return path
 
 
-def run_one(subdivision: str, city: str, model: str, api_key: str) -> bool:
+def run_one(subdivision: str, city: str, model: str, api_key: str,
+            skip_conveniences: bool = False) -> bool:
     print(f"  {subdivision} ({city})... ", end="", flush=True)
     try:
         data = research(subdivision, city, model, api_key)
         path = write_output(subdivision, city, model, data)
         tokens = data.get("usage", {}).get("total_tokens", 0)
         print(f"ok — {path} ({tokens:,} tokens)")
-        return True
     except Exception as exc:
         print(f"FAILED — {exc}")
         return False
+
+    if skip_conveniences:
+        return True
+
+    content = data["choices"][0]["message"]["content"]
+    streets = extract_streets_context(content)
+    if not streets:
+        print(f"  {subdivision} ({city}) conveniences... SKIPPED — couldn't find a "
+              f"section D (streets) in the brief to anchor the query. Run manually with "
+              f"--conveniences --streets \"...\" once you've read the brief.")
+        return True
+
+    return run_conveniences(subdivision, city, streets, model, api_key)
 
 
 def run_conveniences(subdivision: str, city: str, streets: str, model: str, api_key: str) -> bool:
@@ -346,11 +371,14 @@ def main() -> None:
     parser.add_argument("--batch", metavar="FILE",
                         help="Text file with one 'Subdivision|City' pair per line")
     parser.add_argument("--conveniences", action="store_true",
-                        help="Run the narrow, streets-anchored nearby-conveniences leg instead "
-                             "of the full brief. Requires --streets. Not supported with --batch.")
+                        help="Re-run ONLY the narrow, streets-anchored nearby-conveniences leg "
+                             "by hand (e.g. to retry with corrected streets), skipping the full "
+                             "brief. Requires --streets. Not supported with --batch. Normally "
+                             "you don't need this flag — a plain run does both legs already.")
     parser.add_argument("--streets", metavar="\"Street A, Street B, ...\"",
-                        help="Confirmed streets inside the subdivision, used to anchor the "
-                             "--conveniences leg and guard against name collisions.")
+                        help="Confirmed streets to anchor a manual --conveniences re-run.")
+    parser.add_argument("--skip-conveniences", action="store_true",
+                        help="Run only the full brief; don't auto-chain the conveniences leg.")
     args = parser.parse_args()
 
     api_key = os.environ.get("PERPLEXITY_API_KEY")
@@ -388,11 +416,12 @@ def main() -> None:
     else:
         parser.error("Provide a subdivision and city, or use --batch FILE.")
 
-    print(f"\nPerplexity research — {len(pairs)} subdivision(s), model={args.model}\n")
+    leg_note = " (brief only, --skip-conveniences)" if args.skip_conveniences else " (brief + conveniences)"
+    print(f"\nPerplexity research — {len(pairs)} subdivision(s), model={args.model}{leg_note}\n")
 
     succeeded = 0
     for i, (sub, city) in enumerate(pairs):
-        if run_one(sub, city, args.model, api_key):
+        if run_one(sub, city, args.model, api_key, skip_conveniences=args.skip_conveniences):
             succeeded += 1
         if i < len(pairs) - 1:
             time.sleep(2)   # be polite to the API between calls
