@@ -11,10 +11,12 @@ Integrity Homes (John Reuter, Broker/Owner, Waunakee WI) is building a Neighborh
 **Cadence:** one city per week, all subdivisions in that city published the same day. Same-day publishing means within-city interlinking has no dangling-link risk.
 
 **Two-pass model:**
-- **Tier 1** — full publish now using AI research + MLS data. Speed and coverage.
-- **Tier 2** — Kenzie's human intel (Facebook groups, Nextdoor, HOA newsletters, local news) layered into the *existing* published page later. An update, not a rebuild.
+- **Tier 1** — full publish now using AI research + MLS data. Speed and coverage. **A page is "done" at Tier 1 once it clears the Phase 4b QA gate (see `SUBDIVISION-PAGE-BUILDER-README.md`) — not once every open question is personally resolved with John.** Unconfirmed fields (HOA dues, drive times, ambiguous facts) ship as honest "pending"/"not yet routed" badges, not blockers.
+- **Tier 2** — Kenzie's human intel (Facebook groups, Nextdoor, HOA newsletters, local news), real photos, John's personal voice, and resolution of each page's Flags/open-items list — layered into the *existing* published page later, at whatever pace, not a gate before Tier 1 ships.
 
 The competitive edge is not secret information — Tier 1 research is all publicly available. The edge is (a) John's proprietary SCWMLS data, (b) completeness nobody else bothers with, (c) Tier 2 hyperlocal detail later.
+
+**2026-08-19 correction:** the Cathedral Point rebuild took over an hour because Tier 2-scale work (real photos, resolving ambiguous facts live, routed drive times, voice-checking Insider Notes) got treated as blocking Tier 1 "done." It also shipped with real defects — leaked bracketed editorial prompts, "Draft — pending" labels visible to buyers, invisible text from a CSS bug — none of which should have passed any QA step. Phase 4b (pre-publish linter + actual visual render check, not just HTML/schema validation) exists specifically to catch these before they reach a live page or a person's live review time. Also confirmed: this environment cannot drive a real browser to Google Maps for routing data (proxy allows simple HTTPS/API calls, not full browser sessions — tested directly, not assumed) — drive times need a routing API key to become fully automated; until then they ship as "not yet routed," which is an acceptable permanent Tier 1 state, not a defect.
 
 ---
 

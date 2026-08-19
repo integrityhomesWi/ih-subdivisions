@@ -318,9 +318,32 @@ Subdivision_Attack_Plan.xlsx
 
 **Placeholder discipline:** if a hero/photo asset or specific data point isn't confirmed, say so plainly (in copy and/or an HTML comment) rather than guessing or inventing something that looks confirmed. This matches the Kenzie SOP's "verify, don't guess" rule and makes IMAGE-PENDING pages (Phase 3) easy to find and finish later.
 
+### Phase 4b — Pre-Publish QA (mandatory, run before a page is ever called "done")
+
+Added 2026-08-19 after the Cathedral Point rebuild took over an hour of live back-and-forth to catch things that should never have reached that stage. Every item below failed silently on that build — none of them are hypothetical.
+
+**1. Placeholder-leak linter — grep the finished file for all of these before reporting a page complete:**
+- `[ John` or any other bracketed editorial prompt addressed to a person, not a reader
+- `DRAFT`, `Draft —`, `pending` outside the Market Data section's intentional TBD fields
+- `<!-- DRAFT` or any other internal review comment left in place
+- Any literal placeholder token that looks like template scaffolding rather than real copy
+
+A page fails this check if any of the above appears anywhere in the rendered output. Fix or remove before proceeding — do not report the page as built with these still present.
+
+**2. Actual visual render — do not rely on HTML/schema text validation alone.** JSON-LD parsing and grep checks catch zero rendering bugs. Before calling a page done:
+- Render it (this environment has Chromium/Playwright available — screenshot the page, or otherwise actually look at the rendered output, not just the source)
+- Specifically check for: invisible/low-contrast text (a background/foreground color pairing that only got fixed on alternating table rows, a common bug pattern), broken images, layout that only half-applies on mobile
+- A page that "validates" but renders with invisible text has not passed QA
+
+**3. Never assert a resource doesn't exist without actually checking.** "No approved photo exists" must mean the Media Vault / Drive folder was actually searched, not assumed. This is the same failure mode as skipping the Phase 1b archive check before researching — don't repeat it at the asset-search step either.
+
+**4. Consolidate every open question into ONE list per page, surfaced once — not trickled out one at a time.** If a page build leaves N unresolved items (HOA dues, an ambiguous park-vs-stormwater fact, a bio claim that can't be verified, a title tag pick), write them all into that page's Flags/README doc in one pass. John reviews and answers them together, asynchronously, on his own time — not through a live back-and-forth chat per item. A page with open items is still "done" for Tier 1 purposes; the open-items list is what Tier 2 works through, at whatever pace makes sense, not a blocker to shipping.
+
+**5. Routing/drive-time data:** this environment cannot reach live map-routing tools (Google Maps blocks full browser sessions even through the configured proxy, confirmed by direct test 2026-08-19 — simple API/curl-style HTTPS calls work fine, full browser traffic does not). Until a routing API key is wired into the build script, drive times ship as an honest "not yet routed" badge, consistently styled, never a guessed number. This is a permanent, acceptable Tier 1 state — not something to leave "pending" resolution via chat.
+
 ### Tier System (two-pass, not a blocker)
-- **Tier 1 (this build):** Full publish-ready page using Phase 1–4 above. Goal is speed and full coverage across the priority list.
-- **Tier 2 (later enrichment pass):** Kenzie's deeper "secrets of the area" research layered into the *existing* published page. This is an update, not a rebuild — do not regenerate the whole page from scratch.
+- **Tier 1 (this build):** Full publish-ready page using Phase 1–4 (+ 4b QA) above. Goal is speed and full coverage across the priority list. A page passes Tier 1 once it clears Phase 4b — not once every open question is personally resolved with John.
+- **Tier 2 (later enrichment pass):** Kenzie's deeper "secrets of the area" research, real photos, John's personal voice/commentary, and resolution of the Flags/open-items list — layered into the *existing* published page, at whatever pace makes sense. This is an update, not a rebuild — do not regenerate the whole page from scratch, and do not treat it as a blocker to Tier 1 publish.
 
 ---
 
