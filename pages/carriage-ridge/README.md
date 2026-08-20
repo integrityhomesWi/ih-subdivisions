@@ -167,6 +167,31 @@ top of the file.
 - **Blog cross-linking (Phase 5e):** not attempted this pass — no blog content
   inventory was available in this session.
 
+## 2026-08-20 update — URL moved to /westport/carriage-ridge/
+
+John confirmed the page should live under a URL that reflects the actual
+governing municipality rather than the mailing address. Moved canonical,
+og:url, all JSON-LD `@id`s, the breadcrumb list item, and the on-page
+breadcrumb nav from `/waunakee/carriage-ridge/` to `/westport/carriage-ridge/`.
+Breadcrumb level 2 now reads "Town of Westport" linking to `/westport/`.
+
+**Open gap, flagged rather than silently patched over:** this repo (and as
+far as could be checked, the live site) has no `/westport/` hub page. The
+breadcrumb's level-2 link currently points to a URL that doesn't exist yet.
+Two ways to close this: (1) build a minimal Town of Westport hub page, or
+(2) if that's overkill for one subdivision, reconsider whether nesting
+under `/middleton/` (the precedent already set by `pages/bishops-bay/`,
+another Town of Westport/Middleton split-jurisdiction page) makes more
+sense than an orphaned `/westport/` segment. Left for John to decide — did
+not invent a hub page or silently redirect to `/middleton/` without being
+asked.
+
+Topical cross-links to `/waunakee/` (market strip pill, footer links,
+"Explore Waunakee Neighborhoods" CTA, comparison discussion) were
+deliberately left unchanged — those are legitimate nearby-market
+navigation, not the page's own identity URL, and Carriage Ridge is still
+genuinely relevant to Waunakee-area buyers.
+
 ## Not committed to git
 
 Per instructions, files were left in place (`carriage-ridge-v1.html`, this
