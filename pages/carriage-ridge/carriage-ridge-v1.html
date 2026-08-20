@@ -14,7 +14,6 @@
 <meta name="geo.placename" content="Town of Westport, Wisconsin" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" /><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<!-- IMAGE-PENDING: no approved photo exists for Carriage Ridge yet (checked Media Vault / Drive Image Vault 2026-08-20, none found). Hero uses a navy gradient placeholder. Swap for a real photo when Kenzie's Tier 2 field visit (Research Brief item #12) produces one, and bump dateModified when it happens. -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -114,11 +113,15 @@
     /* HERO — no approved photo yet, navy gradient placeholder */
     .hero {
       position: relative; min-height: 68vh; display: flex; align-items: flex-end;
-      background: linear-gradient(135deg, #001530 0%, #002850 45%, #0a3d6b 100%);
+      background-color: #001530;
+      background-image: url('https://cdn.lofty.com/image/fs/341054835208155/website/20980/cmsbuild/2026820_c9a8d9d2c8994dc7.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.12) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(0,15,35,0.9) 0%, rgba(0,15,35,0.4) 55%, rgba(0,15,35,0.15) 100%), radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.12) 0%, transparent 55%);
     }
     .hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--max); margin: 0 auto; padding: 76px 32px 64px; }
     .hero-badge {

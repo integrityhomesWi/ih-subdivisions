@@ -141,10 +141,13 @@ top of the file.
 9. **Wisconsin DFI entity confirmation** for the HOA and/or development company.
 10. **Possible undiscovered third addition** — only two are confirmed (First
     Addition, 2nd Addn); the "68-lot addition" headline's date is unconfirmed.
-11. **Photography/video** — no approved image exists for Carriage Ridge in any
-    source checked. Hero uses a navy gradient placeholder, flagged `IMAGE-PENDING`
-    in an HTML comment. Needs a field visit to shoot ponds, trails, and stable
-    access per the brief's own Tier 2 list.
+11. **Photography/video — update 2026-08-20.** John supplied a hero photo
+    (CDN URL `2026820_c9a8d9d2c8994dc7.jpeg`, same stock image also used on
+    the new `/westport/` hub page for now, as an interim placeholder rather
+    than a Carriage Ridge–specific shot). Wired into the hero background;
+    `IMAGE-PENDING` comment removed. Still worth a real field visit to shoot
+    ponds, trails, and stable access per the brief's own Tier 2 list, and
+    swap in a Carriage Ridge–specific photo when one exists.
 12. **Town of Westport incorporation status — update 2026-08-20.** The URL was
     already moved to `/westport/carriage-ridge/` (see the 2026-08-20 URL-move
     section above). New development: multi-municipal boundary agreements are
