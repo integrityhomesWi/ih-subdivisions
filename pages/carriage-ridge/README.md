@@ -180,16 +180,13 @@ og:url, all JSON-LD `@id`s, the breadcrumb list item, and the on-page
 breadcrumb nav from `/waunakee/carriage-ridge/` to `/westport/carriage-ridge/`.
 Breadcrumb level 2 now reads "Town of Westport" linking to `/westport/`.
 
-**Open gap, flagged rather than silently patched over:** this repo (and as
-far as could be checked, the live site) has no `/westport/` hub page. The
-breadcrumb's level-2 link currently points to a URL that doesn't exist yet.
-Two ways to close this: (1) build a minimal Town of Westport hub page, or
-(2) if that's overkill for one subdivision, reconsider whether nesting
-under `/middleton/` (the precedent already set by `pages/bishops-bay/`,
-another Town of Westport/Middleton split-jurisdiction page) makes more
-sense than an orphaned `/westport/` segment. Left for John to decide — did
-not invent a hub page or silently redirect to `/middleton/` without being
-asked.
+**Update 2026-08-20 — resolved.** The `/westport/` hub page now exists:
+`pages/city-guides/westport/westport.html`, built by John and committed to
+this repo (with a schema-identity fix applied — see that page's own commit).
+Its Carriage Ridge subdivision card links to
+`https://integrityhomeswi.com/westport/carriage-ridge/`, matching this
+page's own canonical/breadcrumb URL exactly. The breadcrumb no longer
+points to an orphaned URL.
 
 Topical cross-links to `/waunakee/` (market strip pill, footer links,
 "Explore Waunakee Neighborhoods" CTA, comparison discussion) were
