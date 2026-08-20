@@ -36,6 +36,35 @@ Phase 8/9 status, and HOA dues, is real and was left untouched).
   Claude-leg/OpenAI-leg research run earlier in this session, which is why
   Phase 1b (check the archive first) matters.
 
+## 2026-08-20 update — Market Data filled, Insider Notes placeholder removed
+
+- **Market Data section filled** from a trailing-12-month Waunakee MLS
+  export (`data/homelight-waunakee-12mo.csv`, pulled by John, August 2026):
+  59 sold, $370K–$842K range, $465,000 median, 19-day median DOM, 100.0%
+  median list-to-sale ratio. John's Take rewritten to flag that this pull
+  blends single-family and Haven twin-home product into one number, which
+  isn't broken out separately yet.
+- **Removed 4 live bracketed `[ John — ... ]` prompts** from the "Insider
+  Notes / What You Won't Find on Zillow" section — these were internal
+  editorial questions addressed to John, never answered, and were leaking
+  onto the rendered page as visible text. Per Phase 4b, that's a
+  placeholder-leak defect. Replaced with an honest "coming soon, call with
+  questions" line. **The 4 original questions, still open, moved here:**
+  1. The real story on the quarry/blasting — recurring since at least
+     2021, Village notices still going out for Phase 9 construction. What
+     does John tell a buyer who asks point-blank? Any firsthand-heard
+     insurance claims?
+  2. How's the "Haven" maintenance-included twin-home program working out
+     in practice — is snow removal/lawn care actually reliable, and is the
+     extra monthly fee (still not publicly posted anywhere) worth it per
+     client feedback?
+  3. What's the vibe given the apartment community sitting in the same
+     master plan — do single-family buyers ask about it, any HOA drama, or
+     is the developer-controlled board a non-issue in practice?
+  4. When a buyer is deciding between Heritage Hills and Kilkenny Farms
+     West (or another Waunakee new-construction option), what actually
+     tips the decision?
+
 ## Not done
 
 Same caveat as the master template: this file is not pushed back to Drive
