@@ -42,6 +42,10 @@ access as a blanket Southbridge amenity.
 4. **No re-record.** The whole package is built to use existing footage only.
 5. **Brand voice** lives in `skills/brand-style-guide/`. Apply it to anything
    client-facing.
+6. **Schema identity IDs are settled.** Every page crediting John or Integrity
+   Homes references `#john` / `#org` by `@id` only — never redefines a full
+   Person/Organization node. See `docs/HOMEPAGE-IDENTITY-IDS.md` before ever
+   questioning this again; Drive docs on this topic can be stale.
 
 ## Skills
 

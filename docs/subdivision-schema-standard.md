@@ -2,6 +2,8 @@
 
 The subdivision page schema, corrected to reference the master identity nodes by `@id` instead of redefining them. Use this structure on every new build and when cleaning up existing pages.
 
+> **The `#john`/`#org` IDs below are settled — see `docs/HOMEPAGE-IDENTITY-IDS.md` for the verification trail before ever second-guessing this again.**
+
 **What changed and why:**
 
 | Issue | Before | After |

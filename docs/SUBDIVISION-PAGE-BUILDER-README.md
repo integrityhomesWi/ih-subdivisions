@@ -341,6 +341,8 @@ A page fails this check if any of the above appears anywhere in the rendered out
 
 **5. Routing/drive-time data:** this environment cannot reach live map-routing tools (Google Maps blocks full browser sessions even through the configured proxy, confirmed by direct test 2026-08-19 — simple API/curl-style HTTPS calls work fine, full browser traffic does not). Until a routing API key is wired into the build script, drive times ship as an honest "not yet routed" badge, consistently styled, never a guessed number. This is a permanent, acceptable Tier 1 state — not something to leave "pending" resolution via chat.
 
+**6. Schema identity IDs — grep for `#johnreuter` and `#organization` before reporting a page complete.** Both must return zero hits. `author` and `publisher` reference `#john` and `#org` by `@id` only — never a redefined full node. See `docs/HOMEPAGE-IDENTITY-IDS.md` — this is settled, verified against the live homepage source; don't re-litigate it, just check for it.
+
 ### Tier System (two-pass, not a blocker)
 - **Tier 1 (this build):** Full publish-ready page using Phase 1–4 (+ 4b QA) above. Goal is speed and full coverage across the priority list. A page passes Tier 1 once it clears Phase 4b — not once every open question is personally resolved with John.
 - **Tier 2 (later enrichment pass):** Kenzie's deeper "secrets of the area" research, real photos, John's personal voice/commentary, and resolution of the Flags/open-items list — layered into the *existing* published page, at whatever pace makes sense. This is an update, not a rebuild — do not regenerate the whole page from scratch, and do not treat it as a blocker to Tier 1 publish.
