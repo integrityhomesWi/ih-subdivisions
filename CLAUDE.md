@@ -46,6 +46,15 @@ access as a blanket Southbridge amenity.
    Homes references `#john` / `#org` by `@id` only — never redefines a full
    Person/Organization node. See `docs/HOMEPAGE-IDENTITY-IDS.md` before ever
    questioning this again; Drive docs on this topic can be stale.
+7. **Page HTML lives in GitHub only.** This repo is the single canonical copy
+   of every subdivision/city-guide page's current version — build and fix
+   pages here, not in Lofty drafts or Drive copies. Lofty is the publish
+   target (paste the finished HTML there to go live). Google Drive holds
+   photos, research briefs, and non-page material only — never treat a page
+   found in Drive as current, and never push a finished page back into Drive.
+   This was learned the hard way: a schema bug sat fixed in one place and
+   silently broken in another for two-plus weeks. See
+   `docs/SUBDIVISION-PAGE-BUILDER-README.md` for the full rationale.
 
 ## Skills
 

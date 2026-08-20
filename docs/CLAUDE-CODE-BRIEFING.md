@@ -2,6 +2,8 @@
 
 Context and task list, carried over from a planning session on August 16, 2026. Read this first before touching anything in the subdivision project.
 
+**Storage location (2026-08-20 update, overrides anything below that says otherwise):** page HTML lives in this GitHub repo only — that's the single canonical current version. Lofty is the publish target. Google Drive is media/research storage, not a page-HTML store; do not treat any Drive copy of a page as current, and don't push finished pages back into Drive. Full rationale in `docs/HOMEPAGE-IDENTITY-IDS.md` and `docs/SUBDIVISION-PAGE-BUILDER-README.md`.
+
 ---
 
 ## What this project is

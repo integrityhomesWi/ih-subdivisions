@@ -1,5 +1,16 @@
 # Subdivision Page Builder — Claude Code Operating Instructions
 
+## Storage location — settled 2026-08-20
+
+**Two places, not three:**
+
+1. **This GitHub repo (`ih-subdivisions`)** — the one canonical copy of every page's current HTML. Version history, diffs, and any agent can verify exactly what's true by reading the file directly. This is the *only* place page HTML gets built, fixed, and stored during active work.
+2. **Lofty CMS** — the published, live site. The actual publish target, non-negotiable.
+
+**Google Drive is not a page-storage location.** It still holds photos, video, research briefs, CMAs, and other non-page material — that's fine and unaffected. But do not save a page's HTML into Drive as a "copy," and do not treat anything found in Drive as the current version of a page. Drive went stale for over two weeks on a schema fix in this exact project (see `docs/HOMEPAGE-IDENTITY-IDS.md`) precisely because it was being used as a second source of truth alongside GitHub, with no discipline keeping the two in sync. When a page is ready, the flow is: build/fix in GitHub → copy the HTML into Lofty → publish. Nothing gets pushed back into Drive.
+
+If any instruction below this line references "the canonical Drive folder" as where pages live, treat that as historical/superseded — GitHub is canonical now.
+
 ## Purpose
 This is the operating guide for building Neighborhood Authority System (NAS) subdivision pages for Integrity Homes autonomously. When told to "build the [Subdivision Name] page" (or given a batch of subdivisions), follow this workflow end to end.
 
@@ -439,7 +450,7 @@ Confirm periodically (not per-page) that Lofty's bot filtering isn't inadvertent
 - [x] All three research engines automated (Claude native + Perplexity API + OpenAI API)
 - [x] URL slug convention — locked, confirmed from live pages
 - [x] Meta title/description format — locked, confirmed from live pages
-- [x] Canonical archive location — Google Drive folder `1vs5sHKyaqkWX6omzWpy8b3dug2zz2Ald`
+- [x] ~~Canonical archive location — Google Drive folder `1vs5sHKyaqkWX6omzWpy8b3dug2zz2Ald`~~ — **superseded 2026-08-20, see the storage-location rule near the top of this doc.** That Drive folder held obsolete, silently-stale copies of pages already fixed elsewhere (schema bug persisted there for 2+ weeks after being corrected in GitHub). GitHub is now the only canonical page-HTML store.
 - [x] Master identity schema corrected — `#org` name/alternateName fixed, `#website` id fixed (was `#site`, which subdivision pages referenced but didn't exist), address + geo + areaServed consolidated into the master node
 - [x] Homepage mission block corrected — jobTitle, brand name, ROH nonprofit status
 - [x] Confirmed no duplicate "Giving Back" section on the live homepage
