@@ -145,10 +145,15 @@ top of the file.
     source checked. Hero uses a navy gradient placeholder, flagged `IMAGE-PENDING`
     in an HTML comment. Needs a field visit to shoot ponds, trails, and stable
     access per the brief's own Tier 2 list.
-12. **Town of Westport incorporation status** — the Town petitioned the Wisconsin
-    Incorporation Review Board in July 2025 to become its own village. If that
-    resolves during this project's active life, the jurisdiction language on this
-    page (and possibly the URL's `/waunakee/` prefix itself) may need revisiting.
+12. **Town of Westport incorporation status — update 2026-08-20.** The URL was
+    already moved to `/westport/carriage-ridge/` (see the 2026-08-20 URL-move
+    section above). New development: multi-municipal boundary agreements are
+    approved and the Town filed its formal incorporation petition with the
+    state on August 7, 2026 (per hngnews.com). Still pending review by the
+    Wisconsin DOA's Incorporation Review Board and, if approved, a local
+    referendum — not final. Page text (About section + sidebar Governance
+    Note) updated to reflect this. If/when incorporation is finalized, revisit
+    "Town of Westport" language across the page for "Village of Westport."
 13. **MLS export** — every Market Data field is pending John's SCWMLS pull. When
     supplied, cross-check against both recorded additions ("Carriage Ridge, First
     Addition To" and "Carriage Ridge, 2nd Addn") and report lot sales separately
