@@ -31,7 +31,7 @@
         "breadcrumb": { "@id": "https://integrityhomeswi.com/waunakee/kilkenny-farms/#breadcrumb" },
         "about": { "@id": "https://integrityhomeswi.com/waunakee/kilkenny-farms/#place" },
         "datePublished": "2026-08-20",
-        "dateModified": "2026-08-20",
+        "dateModified": "2026-08-23",
         "author": { "@id": "https://integrityhomeswi.com/#john" },
         "publisher": { "@id": "https://integrityhomeswi.com/#org" },
         "speakable": {
@@ -123,9 +123,11 @@
       min-height: 70vh;
       display: flex;
       align-items: flex-end;
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+      background-color: var(--navy-dark);
+      background-image: url('https://cdn.lofty.com/image/fs/341054835208155/website/20980/cmsbuild/2026727_24bb5af3c1714019.png');
+      background-size: cover; background-position: center; background-attachment: fixed;
     }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.12) 0%, rgba(0,15,35,0) 60%); }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,15,35,0.9) 0%, rgba(0,15,35,0.4) 55%, rgba(0,15,35,0.15) 100%), radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.12) 0%, rgba(0,15,35,0) 60%); }
     .hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--max); margin: 0 auto; padding: 80px 32px 72px; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy-dark); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 16px; margin-bottom: 18px; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
@@ -347,8 +349,8 @@
       <li><a href="https://integrityhomeswi.com/waunakee/">Waunakee</a></li>
       <li>Kilkenny Farms</li>
     </ol>
-  </nav><!-- HERO — Not Filmed: no approved Kilkenny Farms (base) photo found in Drive/Image Vault as of 2026-08-20. Navy gradient placeholder used per placeholder-discipline rule. Swap for a real hero photo once shot, and bump dateModified when that happens. -->
-  <section class="hero" aria-label="Kilkenny Farms neighborhood, Waunakee WI — hero image pending">
+  </nav><!-- HERO — using a shared interim stock photo (2026727_24bb5af3c1714019.png) as a placeholder, per John's instruction, not a Kilkenny Farms-specific shot. Swap for a real Kilkenny Farms photo and bump dateModified once one is approved. -->
+  <section class="hero" aria-label="Kilkenny Farms neighborhood, Waunakee WI">
     <div class="hero-inner">
       <div class="hero-badge">Established Waunakee Neighborhood</div>
       <div class="hero-eyebrow">Waunakee, Wisconsin · Neighborhood Guide</div>
